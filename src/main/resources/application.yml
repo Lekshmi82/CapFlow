@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: tactos-ledger
+
+  data:
+    mongodb:
+      # Override via environment variable SPRING_DATA_MONGODB_URI in production.
+      # Never commit real credentials to version control.
+      uri: ${MONGODB_URI:mongodb://localhost:27017/tactos_ledger}
+      auto-index-creation: true
+
+server:
+  port: 8080
+  error:
+    # Disable Spring Boot's default /error whitelabel page.
+    # All errors are handled by GlobalExceptionHandler.
+    include-message: never
+    include-binding-errors: never
+    include-stacktrace: never
+    include-exception: false
+
+logging:
+  level:
+    root: INFO
+    com.tactos.ledger: DEBUG
+    org.springframework.data.mongodb: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: when_authorized
