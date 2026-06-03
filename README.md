@@ -1,4 +1,4 @@
-# TactosLedger
+# CapFlow
 
 > **Concurrent-safe startup funding allocation ledger**  
 > Built to prevent over-subscription in high-throughput, parallel back-office environments.
@@ -11,7 +11,7 @@ In a private wealth / venture studio context, multiple back-office ops managers 
 
 A naive "read balance → check → write" approach creates a **race condition**: if two requests both read `$500,000 remaining` and both commit `$400,000`, the round becomes over-subscribed by `$300,000` — a critical financial integrity failure.
 
-**TactosLedger eliminates this entirely.**
+**CapFlow eliminates this entirely.**
 
 ---
 
